@@ -1,3 +1,3 @@
-function vcs.git.branch_name
+function vcs.branch
   command git symbolic-ref --short HEAD ^/dev/null
 end

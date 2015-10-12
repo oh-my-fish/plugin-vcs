@@ -1,3 +1,14 @@
 function init -a path --on-event init_vcs
-  autoload $path/functions/{git,hg,svn}
+  for vcs in git hg svn
+    source $path/functions/$vcs/vcs.$vcs.repo.fish
+  end
+
+  function _vcs.pwd -v PWD -V path
+    autoload -e $path/functions/{git,hg,svn}
+
+    set -l vcs (vcs.name)
+    test -n "$vcs"; and autoload $path/functions/$vcs
+  end
+
+  _vcs.pwd
 end

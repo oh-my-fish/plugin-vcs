@@ -1,3 +1,3 @@
-function vcs.hg.branch_name
+function vcs.branch
   command hg branch ^/dev/null
 end

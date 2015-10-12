@@ -4,7 +4,7 @@ function vcs.present
   end
 
   for name in git hg svn
-    if eval vcs.$name.repo
+    if eval vcs.$name.present
       set -g _vcs_present_path_cache $PWD 0
       return (test "$_vcs_present_path_cache[2]" = 0)
     end

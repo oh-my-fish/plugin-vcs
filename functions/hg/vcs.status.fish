@@ -1,0 +1,2 @@
+function vcs.status
+end

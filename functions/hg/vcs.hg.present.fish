@@ -1,4 +1,5 @@
 function vcs.hg.present
+  available hg; or return 1
   test -d .hg; and return 0
   set -l dir $PWD
 

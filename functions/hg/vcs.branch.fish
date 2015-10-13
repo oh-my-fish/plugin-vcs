@@ -1,3 +1,4 @@
 function vcs.branch
-  command hg branch ^/dev/null
+  cat (vcs.root)/.hg/branch ^/dev/null;
+    or echo "default"
 end

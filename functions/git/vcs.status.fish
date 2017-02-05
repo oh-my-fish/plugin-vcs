@@ -14,6 +14,10 @@ function vcs.status -a ahead behind diverged detached clean
     end
   end
 
+  if test -z "$revs"
+    return
+  end
+
   set remote (echo $revs | cut -f1)
   set local (echo $revs | cut -f2)
 

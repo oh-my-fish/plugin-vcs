@@ -1,6 +1,13 @@
 function vcs.git.present
   type -q git; or return 1
+  test -d .git; and return 0
+  set -l dir $PWD
 
-  test -d .git;
-    or command git rev-parse --git-dir >/dev/null ^&1
+  while test "$dir" != "/"
+    test -d $dir'/.git'; and return 0
+    # Go up one directory
+    set -l dir (dirname $dir ^/dev/null)
+  end
+
+  return 1
 end

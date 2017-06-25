@@ -3,13 +3,19 @@ function init -a path --on-event init_vcs
     source $path/functions/$vcs/vcs.$vcs.present.fish
   end
 
-  function _vcs.pwd -v PWD -V path
-    autoload -e $path/functions/{git,hg,svn}
+  autoload $path/functions/none
+
+  function vcs.refresh -v PWD -V path
+    autoload -e $path/functions/{git,hg,svn,none}
 
     if set -l vcs (vcs.name)
       autoload $path/functions/$vcs
+      return 0
     end
+
+    autoload $path/functions/none
+    return 1
   end
 
-  _vcs.pwd
+  vcs.refresh
 end

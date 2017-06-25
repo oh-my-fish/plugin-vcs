@@ -6,8 +6,9 @@ function init -a path --on-event init_vcs
   function _vcs.pwd -v PWD -V path
     autoload -e $path/functions/{git,hg,svn}
 
-    set -l vcs (vcs.name)
-    test -n "$vcs"; and autoload $path/functions/$vcs
+    if set -l vcs (vcs.name)
+      autoload $path/functions/$vcs
+    end
   end
 
   _vcs.pwd

@@ -5,6 +5,9 @@ function vcs.git.present
 
   while test "$dir" != "/"
     test -d $dir'/.git'; and return 0
+    test -f $dir'/.git'
+      and grep -q gitdir $dir'/.git'
+      and return 0
     # Go up one directory
     set -l dir (dirname $dir ^/dev/null)
   end

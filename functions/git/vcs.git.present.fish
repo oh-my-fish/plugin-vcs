@@ -9,7 +9,7 @@ function vcs.git.present
       and grep -q gitdir $dir'/.git'
       and return 0
     # Go up one directory
-    set -l dir (dirname $dir 2>/dev/null)
+    set dir (dirname $dir 2>/dev/null)
   end
 
   return 1

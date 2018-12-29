@@ -1,3 +1,3 @@
 function vcs.stashed
-  command git rev-parse --verify --quiet refs/stash ^/dev/null
+  command git rev-parse --verify --quiet refs/stash 2>/dev/null
 end

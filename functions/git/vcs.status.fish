@@ -5,10 +5,10 @@ function vcs.status -a ahead behind diverged detached clean
   test -z "$detached"; and set detached "detached"
   test -z "$clean";    and set clean    "clean"
 
-  set revs (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
+  set revs (command git rev-list --count --left-right "@{upstream}...HEAD" 2>/dev/null)
 
   if test "$status" -ne 0
-    if not command git symbolic-ref --short HEAD >/dev/null ^&1
+    if not command git symbolic-ref --short HEAD >/dev/null 2>&1
       echo "$detached"
       return
     end

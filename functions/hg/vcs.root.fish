@@ -8,7 +8,7 @@ function vcs.root
     end
 
     # Go up one directory
-    set -l dir (dirname $dir 2>/dev/null)
+    set dir (dirname $dir 2>/dev/null)
   end
 
   return 1

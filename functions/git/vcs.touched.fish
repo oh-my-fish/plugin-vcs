@@ -1,3 +1,4 @@
 function vcs.touched
-  test -n (echo (command git status --porcelain 2>/dev/null))
+  not command git diff-index --cached --quiet HEAD -- >/dev/null 2>&1
+  or not command git diff --no-ext-diff --quiet --exit-code >/dev/null 2>&1
 end

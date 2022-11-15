@@ -1,4 +1,10 @@
-set -l vcs_path (dirname (dirname $conf_path))
+# conf_path is passed in as an array from `require --path`
+for conf in $conf_path
+  if echo $conf | grep -q 'vcs'
+    # setting function scoped as local scoped means it is local to the if block
+    set -f vcs_path (dirname (dirname $conf))
+  end
+end
 
 for vcs in git hg svn
   source $vcs_path/functions/$vcs/vcs.$vcs.present.fish

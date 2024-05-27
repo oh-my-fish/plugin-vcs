@@ -1,4 +1,4 @@
-set -l vcs_path (dirname (dirname $conf_path))
+set -l vcs_path (dirname (dirname (status -f)))
 
 for vcs in git hg svn
   source $vcs_path/functions/$vcs/vcs.$vcs.present.fish
